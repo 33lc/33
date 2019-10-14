@@ -1,27 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>tree</title>
-	<style type="text/css">
-		textarea{
-			border: 1px solid lightblue;
-			width: 400px;
-			height: 100px;
-		}
-	</style>
+    <meta charset="utf-8">
+    <title>iview example</title>
+    <link rel="stylesheet" type="text/css" href="iview.css">
+    <script type="text/javascript" src="vue.js"></script>
+    <script type="text/javascript" src="iview.min.js"></script>
 </head>
 <body>
-	<textarea id="msg"></textarea><br>
-	<button type="submit" onclick="getmsg()">确认</button>
-	<h1 id="test"></h1>
-	<p id="test1"></p>
-	<script type="text/javascript">
-		function getmsg() {
-			var text = document.getElementById('msg').value;
-			//document.getElementById("test").innerHTML = text.split("\n");
-			var form1=text.split(/[:：]/);
-			document.getElementById("test1").innerHTML=form1[0];
-		}
-	</script>
+<button  onclick="function1()">确认</button>
+<div id="app1">
+    <Tree :data="baseData" ></Tree>
+</div>
+
+<script>
+    
+    var arr =["导师:amy","本科生","17","summy","yamy","18","tenor","研究生","19","suunee"];
+    function function1(){
+    var cart =new Vue({
+        el:'#app1',
+        data () {
+            return {
+                baseData: [{
+                    expand: true,
+                    title: arr[0],
+                    children: 
+                    [{
+                        title: arr[1],
+                        expand: true,
+                        children: 
+                        [{
+                            title: arr[2],
+                            children :[{
+                                title:arr[3],
+                            },
+                            {
+                                title:arr[4],
+                            }]
+                        }, 
+                        {
+                            title: arr[5],
+                            children:[{
+                                title:arr[6],
+                            }]
+                        }]
+                    }, {
+                        title: arr[7],
+                        expand: true,
+                        checked: true,
+                        children: 
+                        [{
+                            title:arr[8],
+                            children:
+                            [{
+                                title:arr[9],
+                            }]    
+                        }]
+                    }]
+                }]
+            }
+        }
+    });}
+</script>
+
 </body>
+
 </html>
